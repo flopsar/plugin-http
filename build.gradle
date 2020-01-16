@@ -1,0 +1,21 @@
+group 'org.flopsar.ext'
+version '3.0'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+jar {
+    archivesBaseName = "plugin-http"
+}
+
+dependencies {
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+}
