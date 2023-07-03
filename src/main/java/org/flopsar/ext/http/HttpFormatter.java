@@ -33,27 +33,24 @@ public class HttpFormatter {
             output.append(req.getRequestURL().toString());
 
             Enumeration hnames = req.getHeaderNames();
-            output.append(SEPARATOR);
-            output.append("HEADER");
-            output.append(SEPARATOR);
             while (hnames.hasMoreElements()){
                 String name = (String)hnames.nextElement();
+                output.append(SEPARATOR);
+                output.append("HDR.");
                 output.append(name);
-                output.append("=");
+                output.append(SEPARATOR);
                 output.append(req.getHeader(name));
-                output.append("+");
             }
 
+            output.append(SEPARATOR);
             Enumeration pnames = req.getParameterNames();
-            output.append(SEPARATOR);
-            output.append("REQPARAMS");
-            output.append(SEPARATOR);
             while(pnames.hasMoreElements()){
                 String name = (String)pnames.nextElement();
+                output.append(SEPARATOR);
+                output.append("REQP.");
                 output.append(name);
-                output.append("=");
+                output.append(SEPARATOR);
                 output.append(req.getParameter(name));
-                output.append("+");
             }
 
             HttpSession session = req.getSession(false);
@@ -65,16 +62,14 @@ public class HttpFormatter {
                 output.append("null");
             else {
                 output.append(session.getId());
-                output.append(SEPARATOR);
-                output.append("ATTRS");
-                output.append(SEPARATOR);
                 Enumeration snames = session.getAttributeNames();
                 while(snames.hasMoreElements()){
                     String name = (String)snames.nextElement();
+                    output.append(SEPARATOR);
+                    output.append("SESS.");
                     output.append(name);
-                    output.append("=");
+                    output.append(SEPARATOR);
                     output.append(String.valueOf(session.getAttribute(name)));
-                    output.append("+");
                 }
             }
 

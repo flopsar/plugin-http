@@ -10,8 +10,10 @@ repositories {
     mavenCentral()
     jcenter()
 }
+sourceSets.main.java.srcDirs += ['src/main/java']
 
 jar {
+    from sourceSets.main.java.srcDirs
     archivesBaseName = "plugin-http"
 }
 
